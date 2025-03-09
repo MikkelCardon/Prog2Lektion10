@@ -11,6 +11,6 @@ class LoanTest {
     void calculateFine() {
         Loan loan = new Loan(LocalDate.of(2025, 1, 1));
 
-        loan.calculateFine(LocalDate.of(2025, 1, 3), false);
+        assertEquals(10, loan.calculateFine(LocalDate.of(2025, 1, 3), false));
     }
 }
