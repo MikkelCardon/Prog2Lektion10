@@ -8,6 +8,9 @@ public class CarInsurance {
      */
     public CarInsurance (double basisPremium) {
         this.basisPremium = basisPremium;
+        if (basisPremium <= 0){
+            throw new IllegalArgumentException();
+        }
     }
     /**
      * Calculate and return a premium based of the following rules:
@@ -29,17 +32,17 @@ public class CarInsurance {
         double premium = basisPremium;
         if (age < 25) premium += basisPremium *0.25;
 
-        if (isWoman) premium *= 0.95;
+        if (isWoman) premium -= basisPremium * 0.05;
 
         if (yearsWithoutDamage <= 2){
             return premium;
         }
         else if (yearsWithoutDamage >= 3 && yearsWithoutDamage <= 5){
-            premium *= 0.85;
+            premium -= basisPremium * 0.15;
         }else if (yearsWithoutDamage <= 8){
-            premium *= 0.75;
+            premium -= basisPremium * 0.25;
         }else{
-            premium *= 0.65;
+            premium -= basisPremium * 0.35;
         }
 
         return premium;
